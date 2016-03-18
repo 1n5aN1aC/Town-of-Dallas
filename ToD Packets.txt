@@ -1,0 +1,97 @@
+# Night Transition
+#145- transition voting -> night walk
+# 93- transition night walk -> night
+#169- full moon?
+
+
+#2-   
+#4-   ????- player has joined the game
+#5-   ????- Player disconnected [1] ]1] [player#]
+#14-  You vote to lynch
+#19-  Godfather decided to kill [player#] (?)  (sheriff susp / not)  (doctor your target was attacked last night) (vig att / not)
+#31-  Lobby- you were Invited to lobby
+#32-  Lobby- you invited to lobby
+#33-  Lobby- player was invited
+#52-  Lobby- Made someone else host
+#58-  Lobby- Player made host (58,hostname)
+#59-  Lobby- ????  comes after player made host
+#61-  Lobby- You were kicked
+#91-  ????- Game starting?
+#94-  ????- transition night -> day
+#96-  transition day -> discussion
+#97-  transition disscussion -> voting [30]
+#98-  transition voting -> defense
+#99-  transition defense -> judgement
+#104- ????- 13 6 1
+#105- ????- transition: voting -> night
+#131- ????- 4 0 94
+#142- ????- Player left the game [player#]
+#147- 
+#155- Begin defense?
+#168- ????- begin of game
+#171- ????- exit to closing screen info
+#172- Chat message at end of game [player#] (message)
+#173- player left game to end game screen [player#] [44] [1]
+#175- ????- begin of game
+
+#3-   Send Chat [?sometimes ?] (message)
+#6-   Get Chat [player#] (message)
+#8-   Send PM [player#] (message)
+#10-  Client vote to lynch [player#]
+#11-  Ability Use [target 30=canceled]
+#17-  Set Last Will (note)
+#18-  Set Death Note (note)
+#35-  Lobby- Get Chat [player] (message)
+#36-  Lobby- Send Chat (message)
+#54-  Lobby- You gave player invite power (name)
+#62-  Lobby- Player got invite power (name)
+#95-  Death Information [player#] [role] [1=night,2=day] (killed by 1perCause)
+#103- Vote to lynch [player#] [voted player] [?]
+#107- Ressurection [player#] [1]
+#109- Name Picked (?, ?)
+#117- Vote to kill [player#]
+#123- Reveal as mayor [Player#]
+#130- Last will no death note [player#] [2] (Last Will)
+#146- Death notification [player#]
+#148- Last will w/ death note [player#] [2] (Killers's Death Note) [2] (Player's Last Will)
+#159- Whisper notifiction. [source#] [dest#]
+#160- Get pm [?] [Player#] [?] (message)
+
+# Roles
+#1-  bodyguard
+#2-  doctor   confirmed
+#3-  escort   confirmed
+#4-  invest   confirmed
+#6-  lookout  confirmed
+#7-  mayor    confirmed
+#8-  medium   confirmed
+#9-  Retrib   
+#10- sherrif  confirmed
+#14- veteran  
+#15- vigil    confirmed
+#16- Blackmai 
+#17- Consig   
+#19- Disguis  
+#21- framer   confirmed
+#22- GF       confirmed
+#23- Janitor  
+#24- mafioso  confirmed
+#25- amnesiac 
+#27- exe      confirmed
+#28- jester   confirmed
+#29- SK       confirmed
+#61- Cleaned  
+
+# Killers
+#0 = lynch
+#1 = jailor
+#2 = vigilante
+#3 = mafia
+#4 = 
+#5 = SK
+#6 = suicide?
+#7 = 
+#8 = killed bodyguarding
+#9 = bodyguard
+#10 = veteran?
+#11 = guilt
