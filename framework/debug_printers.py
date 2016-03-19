@@ -1,4 +1,5 @@
 #!python
+from framework import gui
 
 #  3- Send Chat- (message)
 def chat_send(data_bytes):
@@ -52,6 +53,7 @@ def lobby_get_chat(data_bytes):
 def lobby_send_chat(data_bytes):
     print ("Lobby sent Chat:")
     print ("    Message:", data_bytes[1:].decode('ascii', 'ignore') )
+    gui.App.instance.status.set(data_bytes[1:].decode("utf-8", 'ignore')  )
 
 # 54- You gave player invite power- [player#]
 def lobby_give_invite_power(data_bytes):

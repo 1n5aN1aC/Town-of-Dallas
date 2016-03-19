@@ -5,11 +5,11 @@ from framework import debug_printers
 def parse_data(data):
     data_bytes = bytearray(data)
 
-#Don't show me blank packets.
+    # Don't show me blank packets.
     if data_bytes[0] is 0:
         return
 
-#3- Send Chat
+    # Switch on packet id
     if data_bytes[0] is 3:
         debug_printers.chat_send(data_bytes)
     elif data_bytes[0] is 6:
