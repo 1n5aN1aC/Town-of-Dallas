@@ -25,8 +25,7 @@ class thread_listen(threading.Thread):
         for d in devices:
             print (d)
         print ("")
-        self.cap = pcapy.open_live('\\Device\\NPF_{198D3DE6-6DFD-42A2-ADB4-9BCD50A57982}' , 65536 , 1 , 100000)
-        
+        self.cap = pcapy.open_live('\\Device\\NPF_{198D3DE6-6DFD-42A2-ADB4-9BCD50A57982}' , 65536 , 1 , 5)
         print ("Pcap Prepared")
     
     def listen_loop(self):
