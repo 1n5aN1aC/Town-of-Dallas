@@ -33,23 +33,23 @@ class App(Frame):
     
     #Actually creates all GUI elements
     def createWidgets(self):
-        self.hi_there = Button(self)
-        self.hi_there["text"] = "Disable"
+        self.hi_there = Button(self, text="Disable")
         self.hi_there["command"] = self.remove_buttons
         self.hi_there.grid(row=0, column=0)
         
-        self.test2 = Button(self)
-        self.test2["text"] = "Enable"
+        self.test2 = Button(self, text="Enable")
         self.test2["command"] = self.enable_buttons
         self.test2.grid(row=1, column=0)
         
         
         l = Label(self, textvariable = self.status)
-        l.grid(row=0, column=51, sticky=W)
+        l.grid(row=10, column=0, sticky=W)
         
+        playerlist = LabelFrame(self, text="Player List")
+        playerlist.grid(row=50, column=50)
         for i in range(1,16):
             #Display Player Number
-            num = Label(self, text=i)
+            num = Label(playerlist, text=i)
             num.grid(row=i+50, column=50, sticky=W)
             
             #Generate Name Variables
@@ -57,7 +57,7 @@ class App(Frame):
             temp.set("Player " + str(i) )
             self.gui_playerList[i]['name'] = temp
             #Display Player Name Buttons
-            nameBtn = Button(self, textvariable = self.gui_playerList[i]['name'])
+            nameBtn = Button(playerlist, textvariable = self.gui_playerList[i]['name'])
             nameBtn.config(width=20)
             nameBtn.grid(row=i+50, column=51, sticky=W)
             
@@ -66,7 +66,7 @@ class App(Frame):
             temp.set(0)
             self.gui_playerList[i]['votes'] = temp
             #Display Vote Counts
-            voteZone = Label(self, textvariable=self.gui_playerList[i]['votes'])
+            voteZone = Label(playerlist, textvariable=self.gui_playerList[i]['votes'])
             voteZone.config(width=3)
             voteZone.grid(row=i+50, column=52, sticky=W)
             
@@ -75,7 +75,7 @@ class App(Frame):
             temp.set("X")
             self.gui_playerList[i]['choose'] = temp
             #Display Action Button
-            actn = Button(self, textvariable=self.gui_playerList[i]['choose'])
+            actn = Button(playerlist, textvariable=self.gui_playerList[i]['choose'])
             actn.config(width=2)
             actn.grid(row=i+50, column=53)
             
@@ -84,7 +84,7 @@ class App(Frame):
             temp.set("??")
             self.gui_playerList[i]['role'] = temp
             #Display Role / edit field.
-            roleZone = Label(self, textvariable=self.gui_playerList[i]['role'])
+            roleZone = Label(playerlist, textvariable=self.gui_playerList[i]['role'])
             roleZone.config(width=13)
             roleZone.grid(row=i+50, column=54, sticky=W)
             
@@ -105,3 +105,4 @@ class App(Frame):
         self.gui_playerList[player]['choose'].set("")
         self.gui_playerList[player]['name'].set("**" + self.gui_playerList[player]['name'].get() + "**")
         self.gui_playerList[player]['role'].set(mappings.role_mapping[role])
+        #Also update deadplayers here.
