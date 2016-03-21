@@ -3,6 +3,7 @@ import datetime
 import time
 from framework import mappings
 from tkinter import *
+import tkinter.scrolledtext as tkst
 
 # 
 class App(Frame):
@@ -28,23 +29,54 @@ class App(Frame):
         for i in range(1,16):
             self.gui_playerList[i] = {'name':"Player " + str(i), 'votes':None, 'choose':None, 'role':None, 'alive':True}
         
-        self.status = StringVar()
-        self.status.set("hello")
+        self.time = StringVar()
+        self.time.set("Day")
+        
+        self.day = IntVar()
+        self.day.set(0)
+        
+        self.timeLeft = IntVar()
+        self.timeLeft.set(30)
+        
+        self.chatBox = StringVar()
+        self.chatBox.set("")
     
     #Actually creates all GUI elements
     def createWidgets(self):
-        self.hi_there = Button(self, text="Disable")
-        self.hi_there["command"] = self.remove_buttons
-        self.hi_there.grid(row=0, column=0)
+        #Dead Frame
+        deadFrame = LabelFrame(self, text="Dead List")
+        deadFrame.grid(row=0, column=0)
+        if True:
+            
+            print ("Display dead people & role list here")
         
-        self.test2 = Button(self, text="Enable")
-        self.test2["command"] = self.enable_buttons
-        self.test2.grid(row=1, column=0)
+        #Chat Frame
+        chatFrame = LabelFrame(self, text="Chat")
+        chatFrame.grid(row=50, column=0)
+        if True:
+            self.chat = tkst.ScrolledText(chatFrame, wrap=WORD, width=30, height=23)
+            self.chat.grid(row=1, column=0, sticky=W)
+            
+            chatEntry = Entry(chatFrame, width=40, textvariable = self.chatBox)
+            chatEntry.grid(row=10, column=0, sticky=W)
         
+        #Time Frame
+        timeFrame = LabelFrame(self, text="Time")
+        timeFrame.grid(row=0, column=50)
+        if True:
+            time = Label(timeFrame, textvariable = self.time)
+            time.grid(row=0, column=1, sticky=W)
+            
+            day = Label(timeFrame, textvariable = self.day)
+            day.grid(row=0, column=2, sticky=W)
+            
+            spacer = Label(timeFrame, text=" | ")
+            spacer.grid(row=0, column=3, sticky=W)
+            
+            timer = Label(timeFrame, textvariable = self.timeLeft)
+            timer.grid(row=0, column=4, sticky=W)
         
-        l = Label(self, textvariable = self.status)
-        l.grid(row=10, column=0, sticky=W)
-        
+        #Playerlist Frame
         playerlist = LabelFrame(self, text="Player List")
         playerlist.grid(row=50, column=50)
         for i in range(1,16):
@@ -93,16 +125,17 @@ class App(Frame):
         for i in range(1,16):
             self.gui_playerList[i]['choose'].set("")
     
-    #
+    #Shows the action buttons for those alive
     def enable_buttons(self):
         for i in range(1,16):
             if self.gui_playerList[i]['alive']:
                 self.gui_playerList[i]['choose'].set("X")
     
-    #
+    # Handles Killing a player
     def kill_player(self, player, role, lw="", dn=""):
-        self.gui_playerList[player]['alive'] = False
-        self.gui_playerList[player]['choose'].set("")
-        self.gui_playerList[player]['name'].set("**" + self.gui_playerList[player]['name'].get() + "**")
-        self.gui_playerList[player]['role'].set(mappings.role_mapping[role])
-        #Also update deadplayers here.
+        if self.gui_playerList[player]['alive'] is True:
+            self.gui_playerList[player]['alive'] = False
+            self.gui_playerList[player]['choose'].set("")
+            self.gui_playerList[player]['name'].set("**" + self.gui_playerList[player]['name'].get() + "**")
+            self.gui_playerList[player]['role'].set(mappings.role_mapping[role])
+            #Also update deadplayers here.
