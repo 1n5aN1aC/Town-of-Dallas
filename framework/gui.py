@@ -4,6 +4,7 @@ import time
 from framework import mappings
 from tkinter import *
 import tkinter.scrolledtext as tkst
+from idlelib.ToolTip import *
 
 # 
 class App(Frame):
@@ -29,6 +30,10 @@ class App(Frame):
         for i in range(1,16):
             self.gui_playerList[i] = {'name':"Player " + str(i), 'votes':None, 'choose':None, 'role':None, 'alive':True}
         
+        self.gui_deadList = {}
+        for i in range(1,16):
+            self.gui_deadList[i] = {'role':0, 'rolename':None, 'name':None, 'lw':None, 'dn':None, 'killers':None}
+        
         self.time = StringVar()
         self.time.set("Day")
         
@@ -45,16 +50,61 @@ class App(Frame):
     def createWidgets(self):
         #Dead Frame
         deadFrame = LabelFrame(self, text="Dead List")
-        deadFrame.grid(row=0, column=0)
-        if True:
+        deadFrame.grid(row=50, column=0)
+        for i in range(1,16):
+            #Generate role variables
+            temp = IntVar()
+            temp.set(0)
+            self.gui_deadList[i]['role'] = temp
+            #Display Role Numbers
+            role = Label(deadFrame, textvariable=self.gui_deadList[i]['role'])
+            role.grid(row=i, column=0, sticky=W)
             
-            print ("Display dead people & role list here")
+            #Generate role name variables
+            temp = StringVar()
+            temp.set("Unknown")
+            self.gui_deadList[i]['rolename'] = temp
+            #Display Role Names
+            roleName = Label(deadFrame, textvariable=self.gui_deadList[i]['rolename'])
+            roleName.grid(row=i, column=1, sticky=W)
+            
+            #Generate Name variables
+            temp = StringVar()
+            temp.set("playerName")
+            self.gui_deadList[i]['name'] = temp
+            #Display Name Labels
+            name = Label(deadFrame, textvariable=self.gui_deadList[i]['name'])
+            name.grid(row=i, column=2, sticky=W)
+            
+            #Generate LW variables
+            temp = StringVar()
+            temp.set("")
+            self.gui_deadList[i]['lw'] = temp
+            #Display LW Buttons
+            LW = Button(deadFrame, text='LW')
+            LW.grid(row=i, column=3, sticky=W)
+            
+            #Generate DN variables
+            temp = StringVar()
+            temp.set("")
+            self.gui_deadList[i]['dn'] = temp
+            #Display DN Buttons
+            DN = Button(deadFrame, text='DN')
+            DN.grid(row=i, column=4, sticky=W)
+            
+            #Generate Tooltip variables
+            temp = StringVar()
+            temp.set("")
+            self.gui_deadList[i]['killers'] = temp
+            #Enable Tooltip on player's name
+            Tooltip = ListboxToolTip(name, ["Hello"])
         
         #Chat Frame
         chatFrame = LabelFrame(self, text="Chat")
-        chatFrame.grid(row=50, column=0)
+        chatFrame.grid(row=50, column=25)
         if True:
             self.chat = tkst.ScrolledText(chatFrame, wrap=WORD, width=30, height=23)
+            self.chat.config(state=DISABLED)
             self.chat.grid(row=1, column=0, sticky=W)
             
             chatEntry = Entry(chatFrame, width=40, textvariable = self.chatBox)
@@ -130,6 +180,14 @@ class App(Frame):
         for i in range(1,16):
             if self.gui_playerList[i]['alive']:
                 self.gui_playerList[i]['choose'].set("X")
+    
+    #Adds a chat message to the chat box
+    def add_to_chat(self, message):
+        self.chat.config(state=NORMAL)
+        self.chat.insert(END, message)
+        if True:
+            self.chat.see(END)
+        self.chat.config(state=DISABLED)
     
     # Handles Killing a player
     def kill_player(self, player, role, lw="", dn=""):
