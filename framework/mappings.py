@@ -1,5 +1,8 @@
 #python
 
+# Mapping of player number to names
+player_mapping = {}
+
 # Mapping of role number to name
 role_mapping = {}
 role_mapping[1] = "Bodyguard"

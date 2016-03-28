@@ -184,7 +184,7 @@ class App(Frame):
     #Adds a chat message to the chat box
     def add_to_chat(self, message):
         self.chat.config(state=NORMAL)
-        self.chat.insert(END, message)
+        self.chat.insert(END, message + "\n")
         if True:
             self.chat.see(END)
         self.chat.config(state=DISABLED)
