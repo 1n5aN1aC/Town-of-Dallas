@@ -46,7 +46,7 @@ def lobby_get_chat(data_bytes):
     print ("Lobby got chat:")
     new_bytes = data_bytes[1:].decode('ascii', 'ignore').split('*')
     print ("    Player:", new_bytes[0] )
-    if new_bytes[1]:
+    if new_bytes and new_bytes[1]:
         print ("    Message:", new_bytes[1] )
 
 # 36- Lobby Send Chat- (message)

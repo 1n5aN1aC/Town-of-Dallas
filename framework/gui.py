@@ -28,7 +28,7 @@ class App(Frame):
         
         self.gui_playerList = {}
         for i in range(1,16):
-            self.gui_playerList[i] = {'name':"Player " + str(i), 'votes':None, 'choose':None, 'role':None, 'alive':True}
+            self.gui_playerList[i] = {'name':"Player " + str(i), 'votes':None, 'choosebutton':None, 'choose':None, 'role':None, 'alive':True}
         
         self.gui_deadList = {}
         for i in range(1,16):
@@ -154,12 +154,13 @@ class App(Frame):
             
             #Generate Action Variable
             temp = StringVar()
-            temp.set("X")
+            temp.set("")
             self.gui_playerList[i]['choose'] = temp
             #Display Action Button
             actn = Button(playerlist, textvariable=self.gui_playerList[i]['choose'])
             actn.config(width=2)
             actn.grid(row=i+50, column=53)
+            self.gui_playerList[i]['choosebutton'] = actn
             
             #Generate Role Variable
             temp = StringVar()
@@ -173,13 +174,16 @@ class App(Frame):
     #Changes action buttons to be blank
     def remove_buttons(self):
         for i in range(1,16):
+            self.gui_playerList[i]['choosebutton'].config(relief=SUNKEN)
             self.gui_playerList[i]['choose'].set("")
     
     #Shows the action buttons for those alive
     def enable_buttons(self):
         for i in range(1,16):
             if self.gui_playerList[i]['alive']:
-                self.gui_playerList[i]['choose'].set("X")
+                self.gui_playerList[i]['choosebutton'].config(relief=RAISED)
+            else:
+                self.gui_playerList[i]['choosebutton'].config(relief=SUNKEN)
     
     #Adds a chat message to the chat box
     def add_to_chat(self, message):
@@ -194,6 +198,7 @@ class App(Frame):
         if self.gui_playerList[player]['alive'] is True:
             self.gui_playerList[player]['alive'] = False
             self.gui_playerList[player]['choose'].set("")
+            self.gui_playerList[player]['choosebutton'].config(relief=SUNKEN)
             self.gui_playerList[player]['name'].set("**" + self.gui_playerList[player]['name'].get() + "**")
             self.gui_playerList[player]['role'].set(mappings.role_mapping[role])
             #Also update deadplayers here.

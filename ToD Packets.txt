@@ -5,7 +5,7 @@
 
 
 #2-   
-#4-   ????- player has joined the game
+#4-   player has joined the game [1] [2] (?)
 #5-   ????- Player disconnected [1] ]1] [player#]
 #14-  You vote to lynch
 #19-  Godfather decided to kill [player#] (?)  (sheriff susp / not)  (doctor your target was attacked last night) (vig att / not)
@@ -62,12 +62,13 @@
 #2-  doctor   confirmed
 #3-  escort   confirmed
 #4-  invest   confirmed
+#5-  Jailor   
 #6-  lookout  confirmed
 #7-  mayor    confirmed
 #8-  medium   confirmed
-#9-  Retrib   
+#9-  Retrib   confirmed
 #10- sherrif  confirmed
-#14- veteran  
+#14- veteran  confirmed
 #15- vigil    confirmed
 #16- Blackmai 
 #17- Consig   
@@ -76,10 +77,13 @@
 #22- GF       confirmed
 #23- Janitor  
 #24- mafioso  confirmed
-#25- amnesiac 
+#25- amnesiac confirmed
+#26- arsonist 
 #27- exe      confirmed
 #28- jester   confirmed
 #29- SK       confirmed
+#30- Survivor confirmed
+#33- Witch    confirmed
 #61- Cleaned  
 
 # Killers
@@ -87,7 +91,7 @@
 #1 = jailor
 #2 = vigilante
 #3 = mafia
-#4 = 
+#4 = arsonist
 #5 = SK
 #6 = suicide?
 #7 = 

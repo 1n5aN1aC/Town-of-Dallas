@@ -25,7 +25,7 @@ class thread_listen(threading.Thread):
         for d in devices:
             print (d)
         print ("")
-        self.cap = pcapy.open_live('\\Device\\NPF_{198D3DE6-6DFD-42A2-ADB4-9BCD50A57982}' , 65536 , 1 , 5)
+        self.cap = pcapy.open_live('\\Device\\NPF_{528991FE-E374-4722-83D9-576BBBB537AF}' , 65536 , 1 , 5)
         print ("Pcap Prepared")
     
     def listen_loop(self):
@@ -88,10 +88,10 @@ class thread_listen(threading.Thread):
                 if source_port == 3600 or dest_port == 3600:
                     #Don't show me blank packets.
                     if data and bytearray(data) is not 0:
-                        if source_port == 3600:
-                            print ("Server:")
-                        else:
-                            print ("Client:")
+                        #if source_port == 3600:
+                        #    print ("Server:")
+                        #else:
+                        #    print ("Client:")
                         parser.parse_data(data)
         
 # If ran directly, begin the sniffer

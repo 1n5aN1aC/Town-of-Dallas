@@ -1,5 +1,6 @@
 #!python
 from framework import debug_printers
+from framework import handlers
 
 # Called by parse_packet to actually print something.
 def parse_data(data):
@@ -13,7 +14,7 @@ def parse_data(data):
     if data_bytes[0] is 3:
         debug_printers.chat_send(data_bytes)
     elif data_bytes[0] is 6:
-        debug_printers.chat_get(data_bytes)
+        handlers.chat_get(data_bytes)
     elif data_bytes[0] is 8:
         debug_printers.send_pm(data_bytes)
     elif data_bytes[0] is 10:
@@ -39,7 +40,8 @@ def parse_data(data):
     elif data_bytes[0] is 107:
         debug_printers.resurrection(data_bytes)
     elif data_bytes[0] is 109:
-        debug_printers.pick_name(data_bytes)
+        debug_printers.pick_name(data_bytes)##############
+        handlers.pick_name(data_bytes)
     elif data_bytes[0] is 117:
         debug_printers.vote_kill(data_bytes)
     elif data_bytes[0] is 123:
@@ -56,5 +58,3 @@ def parse_data(data):
         debug_printers.recieved_pm(data_bytes)
     else:
         debug_printers.print_unknown(data, data_bytes)
-    #always print a newline at the end
-    print ("")
