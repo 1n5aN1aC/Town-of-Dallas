@@ -1,5 +1,5 @@
 #THIS PROJECT IS ON HOLD INDEFINITLY DUE TO LACK OF INTEREST.
-##However, I beleive the packet data found here is still correct.
+##However, I believe the packet data found here is still correct.
 
 An alternate GUI for Town-Of-Salem that doesn't suck as much as the default client does.
 
